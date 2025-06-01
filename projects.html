@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Rushina Shrestha</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        /* General Styles & Typography - COPIED FROM INDEX.HTML */
+        :root {
+            --primary-color: #607D8B; /* A calm, grayish-blue */
+            --primary-light: #B0BEC5; /* Lighter shade for subtle accents */
+            --primary-dark: #455A64; /* Darker shade for deeper tones */
+            --text-color: #333;
+            --light-text-color: #666;
+            --background-color: #f4f7f6;
+            --card-background: #ffffff;
+            --border-color: #e0e0e0;
+            --hover-background: #ECEFF1; /* Very light gray for hover */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto; /* Adjusted margin to match other pages */
+            padding: 2.5rem; /* Adjusted padding to match other pages */
+            background-color: var(--card-background);
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            /* Grid layout for projects - specific to projects.html */
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Navigation - COPIED FROM INDEX.HTML */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            grid-column: 1 / -1; /* Make nav span all columns */
+        }
+
+        .name-title {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--light-text-color);
+            font-weight: 500;
+            transition: color 0.3s ease, transform 0.2s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Projects Page Specific Styles */
+        h2 {
+            font-size: 2.2rem; /* Adjusted to match other main headings */
+            color: var(--primary-color);
+            text-align: left; /* Aligned left to match other page headings */
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--primary-color); /* Added border to match other headings */
+            padding-bottom: 0.5rem;
+            font-weight: 600;
+            grid-column: 1 / -1; /* Make H2 span all columns in the grid */
+        }
+
+        /* Project Card Styling */
+        .project-card {
+            background: var(--card-background); /* Use theme card background */
+            border-radius: 10px; /* Matched theme border-radius */
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--border-color); /* Matched theme border color */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* Matched theme shadow */
+            overflow: hidden;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1); /* Slightly stronger hover shadow */
+        }
+
+        /* Image Placeholder Styling */
+        .project-image-placeholder {
+            width: 100%;
+            height: 200px;
+            background-color: var(--background-color); /* Use a subtle background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-light); /* Use a lighter primary color */
+            margin-bottom: 1rem;
+            border: 1px dashed var(--border-color); /* Use theme border color */
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .project-image-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Project Header (Title and Timeline) */
+        .project-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-title-group {
+            flex-grow: 1;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            color: var(--text-color); /* Use main text color */
+            margin-bottom: 0;
+            font-weight: 600;
+        }
+
+        .project-timeline {
+            font-size: 0.8rem;
+            color: var(--primary-dark); /* Use a darker primary color for distinction */
+            background: var(--hover-background); /* Use subtle hover background */
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .project-description {
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        /* Key Features (now Project Contributions/Details) */
+        .key-features {
+            margin-bottom: 1rem;
+        }
+
+        .key-features h4 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+
+        .key-features ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .key-features li {
+            font-size: 0.9rem;
+            margin-bottom: 0.4rem;
+            padding-left: 1.2rem;
+            position: relative;
+            color: var(--light-text-color); /* Lighter text for list items */
+        }
+
+        .key-features li::before {
+            content: "•";
+            color: var(--primary-color); /* Use primary color for bullet points */
+            position: absolute;
+            left: 0;
+            font-size: 1.1em;
+        }
+
+        /* Skills Section */
+        .skills-section {
+            margin-top: 1rem;
+        }
+
+        .skills-section h4 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: 0.5rem;
+        }
+
+        .skill-tag {
+            background: var(--hover-background); /* Use subtle hover background */
+            color: var(--primary-dark); /* Use darker primary for skill tags */
+            padding: 0.3rem 0.7rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* View Details Button (now directly a link) */
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color); /* Use primary color for buttons */
+            color: white;
+            padding: 10px 20px; /* Slightly more prominent button */
+            border-radius: 8px; /* Matched theme border-radius */
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem; /* Matched general font size */
+            font-weight: 600; /* Made bolder */
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin-top: auto;
+            align-self: flex-start;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark); /* Darker primary on hover */
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Design - COPIED & ADJUSTED FROM INDEX.HTML */
+        @media (max-width: 992px) {
+            .container {
+                padding: 1.5rem;
+            }
+            nav {
+                flex-direction: column;
+                margin-bottom: 2rem;
+            }
+            .name-title {
+                margin-bottom: 1rem;
+            }
+            .nav-links {
+                flex-direction: column; /* Stack nav links on smaller screens */
+                gap: 1rem;
+            }
+            h2 { /* Adjusted for responsive headings */
+                font-size: 1.8rem;
+                margin-bottom: 1.5rem;
+            }
+            .project-card {
+                padding: 1.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr; /* Single column on small screens */
+            }
+            .nav-links {
+                display: none; /* Hide nav links on very small screens for now */
+            }
+            .project-card {
+                padding: 1rem;
+            }
+            .project-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            h2 { /* Adjusted for responsive headings */
+                font-size: 1.6rem;
+                margin-bottom: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 1rem;
+            }
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a href="index.html" class="name-title">Rushina Shrestha</a>
+            <div class="nav-links">
+                <a href="projects.html">Projects</a>
+                <a href="files/Rushina_Shrestha_Resume.pdf" target="_blank">Resume</a> <a href="contact.html">Contact</a>
+            </div>
+        </nav>
+
+        <h2>My Projects</h2>
+
+        <div class="project-card">
+            <div class="project-image-placeholder">
+                <img src="images/ecommerce-app.png" alt="E-commerce Website Thumbnail">
+            </div>
+            <div class="project-header">
+                <div class="project-title-group">
+                    <h3 class="project-title">E-commerce Website</h3>
+                </div>
+                <span class="project-timeline">Software Project</span>
+            </div>
+            <div class="project-description">
+                <p>Architected and developed a dynamic, responsive e-commerce platform, integrating a comprehensive product gallery, user authentication, and a robust cart system.</p>
+            </div>
+            <div class="key-features">
+                <h4>Key Contributions</h4>
+                <ul>
+                    <li>Implemented modern UI/UX principles using React to create a seamless and visually appealing shopping experience.</li>
+                    <li>Currently designing and integrating a secure backend with Node.js and MongoDB to manage product data, user accounts, and order processing.</li>
+                </ul>
+            </div>
+            <div class="skills-section">
+                <h4>Technologies & Skills</h4>
+                <div class="skills-grid">
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">MongoDB</span>
+                    <span class="skill-tag">RESTful APIs</span>
+                    <span class="skill-tag">UI/UX Design</span>
+                    <span class="skill-tag">Full-stack Development</span>
+                </div>
+            </div>
+            <a href="https://github.com/RuShre1/ecommerce" target="_blank" class="btn">View on GitHub</a>
+        </div>
+
+        <div class="project-card">
+            <div class="project-image-placeholder">
+                <img src="images/capstone.png" alt="LLM Style Guide Editor Thumbnail">
+            </div>
+            <div class="project-header">
+                <div class="project-title-group">
+                    <h3 class="project-title">LLM Style Guide Editor</h3>
+                </div>
+                <span class="project-timeline">Group Capstone Project</span>
+            </div>
+            <div class="project-description">
+                <p>Developed the entire front-end user interface for an LLM-assisted technical writing tool, ensuring a responsive and intuitive user experience.</p>
+            </div>
+            <div class="key-features">
+                <h4>Key Contributions</h4>
+                <ul>
+                    <li>Collaborated on strategic planning and created the comprehensive presentation slides for the project.</li>
+                    <li>Presented the project to stakeholders alongside the group, effectively demonstrating core functionalities and architectural decisions.</li>
+                </ul>
+            </div>
+            <div class="skills-section">
+                <h4>Technologies & Skills</h4>
+                <div class="skills-grid">
+                    <span class="skill-tag">HTML</span>
+                    <span class="skill-tag">CSS</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">UI/UX Design</span>
+                    <span class="skill-tag">Front-end Development</span>
+                    <span class="skill-tag">Technical Writing Tools</span>
+                </div>
+            </div>
+            <a href="https://github.com/RuShre1/STEXFORM" target="_blank" class="btn">View on GitHub</a>
+        </div>
+
+        <div class="project-card">
+            <div class="project-image-placeholder">
+                <img src="images/website.png" alt="Portfolio Website Thumbnail">
+            </div>
+            <div class="project-header">
+                <div class="project-title-group">
+                    <h3 class="project-title">Portfolio Website</h3>
+                </div>
+                <span class="project-timeline">Personal Project</span>
+            </div>
+            <div class="project-description">
+                <p>Developed a personalized, mobile-responsive portfolio website to effectively showcase academic achievements, personal projects, and technical skills.</p>
+            </div>
+            <div class="key-features">
+                <h4>Key Contributions</h4>
+                <ul>
+                    <li>Integrated critical web functionalities including an accessible contact form and implemented SEO best practices to enhance online visibility.</li>
+                    <li>Designed for a clean user experience, ensuring intuitive navigation and quick access to project details.</li>
+                </ul>
+            </div>
+            <div class="skills-section">
+                <h4>Technologies & Skills</h4>
+                <div class="skills-grid">
+                    <span class="skill-tag">HTML</span>
+                    <span class="skill-tag">CSS</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">Responsive Design</span>
+                    <span class="skill-tag">SEO</span>
+                    <span class="skill-tag">Web Design</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-image-placeholder">
+                <img src="images/calculator.png" alt="Calculator Thumbnail">
+            </div>
+            <div class="project-header">
+                <div class="project-title-group">
+                    <h3 class="project-title">Calculator</h3>
+                </div>
+                <span class="project-timeline">Personal Project</span>
+            </div>
+            <div class="project-description">
+                <p>Engineered a fully functional and responsive web-based calculator capable of handling real-time user input and executing complex arithmetic logic.</p>
+            </div>
+            <div class="key-features">
+                <h4>Key Contributions</h4>
+                <ul>
+                    <li>Implemented custom JavaScript logic to manage button interactions, display updates, and calculation processes, ensuring accurate results.</li>
+                    <li>Designed with HTML and CSS to provide a clean, accessible, and user-friendly interface across various devices.</li>
+                </ul>
+            </div>
+            <div class="skills-section">
+                <h4>Technologies & Skills</h4>
+                <div class="skills-grid">
+                    <span class="skill-tag">HTML</span>
+                    <span class="skill-tag">CSS</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">DOM Manipulation</span>
+                    <span class="skill-tag">Arithmetic Logic</span>
+                    <span class="skill-tag">Responsive Design</span>
+                </div>
+            </div>
+            <a href="https://github.com/RuShre1/Calculator" target="_blank" class="btn">View on GitHub</a>
+        </div>
+
+        <div class="project-card">
+            <div class="project-image-placeholder">
+                <img src="images/proj3.png" alt="Cyber Aerial Systems Thumbnail">
+            </div>
+            <div class="project-header">
+                <div class="project-title-group">
+                    <h3 class="project-title">Cyber Aerial Systems (UAS/Drone Security)</h3>
+                </div>
+                <span class="project-timeline">Academic Project</span>
+            </div>
+            <div class="project-description">
+                <p>Participated in the analysis and simulation of a UAS/drone security system in MATLAB, focusing on methods to obscure drone location via signal interference.</p>
+            </div>
+            <div class="key-features">
+                <h4>Key Contributions</h4>
+                <ul>
+                    <li>Collaborated on research and contributed to discussions regarding ethical implications and protective measures for drone usage.</li>
+                </ul>
+            </div>
+            <div class="skills-section">
+                <h4>Technologies & Skills</h4>
+                <div class="skills-grid">
+                    <span class="skill-tag">MATLAB</span>
+                    <span class="skill-tag">Simulation Analysis</span>
+                    <span class="skill-tag">Signal Processing</span>
+                    <span class="skill-tag">Research</span>
+                    <span class="skill-tag">UAS Security</span>
+                </div>
+            </div>
+            </div>
+
+        <div class="project-card">
+            <div class="project-image-placeholder">
+                <img src="images/ai_mpa.png" alt="MPA Heuristic Search AI Thumbnail">
+            </div>
+            <div class="project-header">
+                <div class="project-title-group">
+                    <h3 class="project-title">MPA Heuristic Search AI</h3>
+                </div>
+                <span class="project-timeline">Partner Research, Intro to AI Course</span>
+            </div>
+            <div class="project-description">
+                <p>Conducted research and executed MATLAB code to simulate the Marine Predator Algorithm (MPA) heuristic search, analyzing its efficiency in finding optimal solutions.</p>
+            </div>
+            <div class="key-features">
+                <h4>Key Contributions</h4>
+                <ul>
+                    <li>Contributed to the presentation and documentation of findings, explaining algorithmic performance and applications.</li>
+                </ul>
+            </div>
+            <div class="skills-section">
+                <h4>Technologies & Skills</h4>
+                <div class="skills-grid">
+                    <span class="skill-tag">MATLAB</span>
+                    <span class="skill-tag">Heuristic Search</span>
+                    <span class="skill-tag">Algorithm Analysis</span>
+                    <span class="skill-tag">AI Research</span>
+                    <span class="skill-tag">Optimization</span>
+                </div>
+            </div>
+            </div>
+
+        <div class="project-card">
+            <div class="project-image-placeholder">
+                <img src="images/LLAMA.png" alt="LLaMA Research Project Thumbnail">
+            </div>
+            <div class="project-header">
+                <div class="project-title-group">
+                    <h3 class="project-title">LLaMA Research Project</h3>
+                </div>
+                <span class="project-timeline">Group Research</span>
+            </div>
+            <div class="project-description">
+                <p>Participated in an group project, executing and analyzing LLaMA-based models via Google Colab and Hugging Face resources.</p>
+            </div>
+            <div class="key-features">
+                <h4>Key Contributions</h4>
+                <ul>
+                    <li>Contributed to the research report and presentation, detailing model exploration and analysis of replicated findings from original authors.</li>
+                </ul>
+                <ul>
+                    <li>Presented the research to class with gorup.</li>
+                </ul>
+            </div>
+            <div class="skills-section">
+                <h4>Technologies & Skills</h4>
+                <div class="skills-grid">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Google Colab</span>
+                    <span class="skill-tag">Hugging Face</span>
+                    <span class="skill-tag">NLP</span>
+                    <span class="skill-tag">LLaMA Models</span>
+                    <span class="skill-tag">Research</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-image-placeholder">
+                <img src="images/heart.png" alt="Hurricane Relief System Thumbnail">
+            </div>
+            <div class="project-header">
+                <div class="project-title-group">
+                    <h3 class="project-title">Hurricane Relief System</h3>
+                </div>
+                <span class="project-timeline">Group Project</span>
+            </div>
+            <div class="project-description">
+                <p>Assisted in the design phase of a SQL database for emergency response logistics, focusing on logical data flow and schema documentation.</p>
+            </div>
+            <div class="key-features">
+                <h4>Key Contributions</h4>
+                <ul>
+                    <li>Contributed to the project report and presentation, detailing database structure and its application in managing relief efforts.</li>
+                </ul>
+            </div>
+            <div class="skills-section">
+                <h4>Technologies & Skills</h4>
+                <div class="skills-grid">
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Database Design</span>
+                    <span class="skill-tag">Data Modeling</span>
+                    <span class="skill-tag">Emergency Response</span>
+                    <span class="skill-tag">Documentation</span>
+                </div>
+            </div>
+            </div>
+
+    </div>
+
+</body>
+</html>

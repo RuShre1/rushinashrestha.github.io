@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Rushina Shrestha</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        /* Re-using the same styles as index.html for consistency */
+        :root {
+            --primary-color: #607D8B; /* A calm, grayish-blue */
+            --primary-light: #B0BEC5; /* Lighter shade for subtle accents */
+            --primary-dark: #455A64; /* Darker shade for deeper tones */
+            --text-color: #333;
+            --light-text-color: #666;
+            --background-color: #f4f7f6;
+            --card-background: #ffffff;
+            --border-color: #e0e0e0;
+            --hover-background: #ECEFF1; /* Very light gray for hover */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2.5rem;
+            background-color: var(--card-background);
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Navigation - copied from index.html */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .name-title {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--light-text-color);
+            font-weight: 500;
+            transition: color 0.3s ease, transform 0.2s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Contact Page Specific Styles */
+        .contact-content {
+            padding: 1.5rem;
+            background-color: var(--card-background);
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-content h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .contact-content p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        .contact-info-block {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info-block a {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--text-color);
+            padding: 0.8rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info-block a:hover {
+            color: var(--primary-color);
+        }
+
+        .contact-info-block i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            width: 30px; /* Align icons */
+            text-align: center;
+        }
+
+        /* Responsive Adjustments (copied from index.html) */
+        @media (max-width: 992px) {
+            .container {
+                padding: 1.5rem;
+            }
+            nav {
+                flex-direction: column;
+                margin-bottom: 2rem;
+            }
+            .name-title {
+                margin-bottom: 1rem;
+            }
+            .nav-links {
+                flex-direction: column; /* Stack nav links on smaller screens */
+                gap: 1rem;
+            }
+            .contact-content h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Hide nav links on very small screens for now */
+            }
+            .contact-content {
+                padding: 1rem;
+            }
+            .contact-content h2 {
+                font-size: 1.6rem;
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 1rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a href="index.html" class="name-title">Rushina Shrestha</a>
+            <div class="nav-links">
+                <a href="projects.html">Projects</a>
+                <a href="files/Rushina_resume.pdf" target="_blank">Resume</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </nav>
+
+        <div class="contact-content">
+            <h2>Get in Touch</h2>
+            <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Feel free to reach out!</p>
+
+            <div class="contact-info-block">
+                <a href="mailto:rushinashrestha1@gmail.com" class="highlight-link">
+                    <i class="fas fa-envelope"></i>
+                    rushinashrestha1@gmail.com
+                </a>
+            </div>
+
+            <div class="contact-info-block">
+                <a href="https://www.linkedin.com/in/rushina-shrestha-12673b308/" target="_blank" class="highlight-link">
+                    <i class="fab fa-linkedin"></i>
+                    Connect on LinkedIn
+                </a>
+            </div>
+
+            <div class="contact-info-block">
+                <a href="https://github.com/RuShre1" target="_blank" class="highlight-link">
+                    <i class="fab fa-github"></i>
+                    View my GitHub
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
